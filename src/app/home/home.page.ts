@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { BarcodeScanner, BarcodeScannerOptions } from '@ionic-native/barcode-scanner/ngx';
+import { Geolocation } from '@ionic-native/geolocation/ngx';
+import { NativeGeocoder, NativeGeocoderResult, NativeGeocoderOptions } from '@ionic-native/native-geocoder/ngx';
 
 @Component({
   selector: 'app-home',
@@ -11,7 +13,18 @@ export class HomePage {
   encodedData: '';
   encodeData: any;
   inputData: any;
-  constructor(private barcodeScanner: BarcodeScanner) { }
+  latitude: any = 0; //latitude
+  longitude: any = 0; //longitude
+  address: string;
+  userlocation: any;
+
+  constructor(
+    private barcodeScanner: BarcodeScanner,
+    private geolocation: Geolocation,
+    private nativeGeocoder: NativeGeocoder) { 
+      this.getCurrentCoordinates()
+    }
+
   scanBarcode() {
     const options: BarcodeScannerOptions = {
       preferFrontCamera: false,
@@ -41,5 +54,74 @@ export class HomePage {
       console.log('Error occured : ' + err);
     });
   }
+
+  options = {
+    timeout: 10000, 
+    enableHighAccuracy: true, 
+    maximumAge: 3600
+  };
+
+  getCurrentCoordinates() {
+    this.geolocation.getCurrentPosition().then((resp) => {
+      console.log(resp)
+      this.latitude = resp.coords.latitude;
+      this.longitude = resp.coords.longitude;
+      console.log(this.latitude, this.longitude)
+     }).catch((error) => {
+       console.log('Error getting location', error);
+     });
+  }
+
+  nativeGeocoderOptions: NativeGeocoderOptions = {
+    useLocale: true,
+    maxResults: 5
+  };
+
+  getAddress(lat,long){
+    this.nativeGeocoder.reverseGeocode(lat, long, this.nativeGeocoderOptions)
+    .then((res: NativeGeocoderResult[]) => {
+      this.address = this.pretifyAddress(res[0]);
+      console.log(this.pretifyAddress);
+    })
+    .catch((error: any) => {
+      alert('Error getting location'+ JSON.stringify(error));
+    });
+  }
+
+  pretifyAddress(address){
+    let obj = [];
+    let data = "";
+    for (let key in address) {
+      obj.push(address[key]);
+    }
+    obj.reverse();
+    for (let val in obj) {
+      if(obj[val].length)
+      data += obj[val]+', ';
+    }
+    console.log(address)
+    return address.slice(0, -2);
+  }
+
+  //
+
+  getUserLocation(){
+    let options: NativeGeocoderOptions = {
+      useLocale: true,
+      maxResults: 5
+    };
+    this.geolocation.getCurrentPosition().then(resp => {
+      this.nativeGeocoder.reverseGeocode(resp.coords.latitude, resp.coords.longitude, options)
+        .then((result: NativeGeocoderResult[]) => {
+          this.userlocation = this.pretifyAddress(result[0]);
+        }, error => {
+          console.log(error)
+        });
+    }, error => {
+      console.log('Error getting location', error);
+    })
+  }
+
+ 
 
 }

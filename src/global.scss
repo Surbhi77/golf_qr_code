@@ -24,3 +24,36 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+.MainWapperPadding {
+    padding: 0px 20px;
+  }
+  .MainHeaderBar:after {
+    background-image: none;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 5%);
+  }
+  .MainTitle {
+    color: #222;
+    font-size: 16px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 100%;
+    top: 0;
+  }
+  .PT-40{
+    padding-top: 40px;
+  }
+  
+  .BackBtnTop {
+    --background: #fff;
+    background: #fff;
+    --box-shadow: none;
+    position: relative;
+      z-index: 999;
+  }

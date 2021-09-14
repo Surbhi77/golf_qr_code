@@ -1,0 +1,93 @@
+.Welcome {
+    padding-top: 15%;
+    h3{
+      margin: 0;
+      font-size: 28px;
+      font-weight: bold;
+      line-height: 34px;
+    }
+    h4{
+      margin: 0;
+      font-size: 20px;
+      color: #999999;
+      font-weight: 400;
+      line-height: 24px;
+      margin-top: 5px;
+    }
+  }
+  .logos {
+    text-align: center;
+    margin-top: 15%;
+    margin-bottom: 15%;
+  }
+  .inputforms ion-item::part(native) {
+    padding: 0;
+  }
+  .inputforms ion-item::part(native) .item-inner {
+    padding-inline-end: 0 !important;
+  }
+  .inputforms ion-item {
+    border: 1px solid #E5EDF3;
+    border-radius: 10px;
+    padding: 0px 15px;
+    overflow: visible;
+  }
+  
+  ion-item {
+    --padding-end: 0px;
+    --inner-padding-end: 0px;
+    // here other custom CSS from documentation
+  }
+  
+  .inputforms ion-item ion-label {
+    margin-top: -20px !important;
+    background: #fff;
+    display: flex !important;
+    flex-direction: unset;
+    max-width: fit-content !important;
+    font-size: 18px !important;
+    color: #999999;
+  }
+  .passitem{
+    margin-top: 20px;
+  }
+  .item-has-focus {
+    border: 1px solid #d9ac75 !important;
+  }
+  .item-has-focus ion-label {
+    color: #d9ac75 !important;
+  }
+  .ForgotPass {
+    display: flex;
+    justify-content: flex-end;
+    p {
+      font-size: 14px;
+      color: #222;
+      font-weight: 500;
+    }
+  }
+  
+  .ThemeBtnLogin {
+    margin: 0;
+    box-shadow: none;
+    height: 50px;
+    border-radius: 10px;
+    font-size: 16px;
+  }
+  
+  .ThemeBtnLogin::part(native) {
+    border-radius: 10px;
+    box-shadow: none;
+    background-image: linear-gradient(to right, #873317, #9d532b, #b37343, #c9935e, #deb37c);
+  }
+  
+  .loginbtn {
+    padding-top: 10%;
+  }
+  
+  .error {
+    font-size: 11px;
+    color: red;
+    display: block;
+  }
+  
