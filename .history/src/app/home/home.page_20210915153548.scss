@@ -1,0 +1,45 @@
+#container {
+  text-align: center;
+
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+#container strong {
+  font-size: 20px;
+  line-height: 26px;
+}
+
+#container p {
+  font-size: 16px;
+  line-height: 22px;
+
+  color: #8c8c8c;
+
+  margin: 0;
+}
+
+#container a {
+  text-decoration: none;
+}
+
+.ThemeBtnLogin {
+  margin: 0;
+  box-shadow: none;
+  height: 50px;
+  border-radius: 10px;
+  font-size: 16px;
+}
+
+.ThemeBtnLogin::part(native) {
+  border-radius: 10px;
+  box-shadow: none;
+  background-image: linear-gradient(to right, #873317, #9d532b, #b37343, #c9935e, #deb37c);
+}
+
+.head{
+  display: flex;
+}

@@ -1,0 +1,41 @@
+<ion-header class="MainHeaderBar">
+  <ion-toolbar>
+    <ion-button slot="start" class="BackBtnTop" >
+      <img class="BackArrow" src="assets/icon/left-arrow.svg" />
+    </ion-button>
+    <ion-title class="MainTitle">My QR Code</ion-title>
+  
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <button (click)="logout()">Logout</button><br>
+  <button ion-button (click)="getUserLocation()">Get location</button>
+  <h1 >Current user Location is 
+      <div *ngIf="address">
+        <span *ngIf="address.countryCode">Country:{{address.countryCode}},</span>
+        <span *ngIf="address.postalCode">Postal code: {{address.postalCode}},</span> 
+        <span *ngIf="address.administrativeArea">administrativeArea:{{address.administrativeArea}},</span>
+        <span *ngIf="address.subAdministrativeArea">subAdministrativeArea:{{address.subAdministrativeArea}},</span>
+        <span *ngIf="address.locality">locality:{{address.locality}},</span> 
+        <span *ngIf="address.subLocality"> subLocality:{{address.subLocality}},</span>
+        <span *ngIf="address.thoroughfare">thoroughfare:{{address.thoroughfare}},</span>
+        <span *ngIf="address.subThoroughfare">subThoroughfare:{{address.subThoroughfare}},</span>
+        <span *ngIf="address.areasOfInterest">areasOfInterest:{{address.areasOfInterest[0]}}</span>
+    </div>
+  </h1>
+  <ion-card>
+    <ion-card-header>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-button expand="full" color="success" (click)="scanBarcode()">Scan a Code</ion-button>
+      <div *ngIf="scannedData">
+        <p>
+          Scanned Code Text : <b>{{ scannedData["text"] }}</b>
+        </p>
+      
+      </div>
+    </ion-card-content>
+  </ion-card>
+  
+</ion-content>

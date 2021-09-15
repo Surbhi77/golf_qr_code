@@ -1,0 +1,28 @@
+<ion-header class="MainHeaderBar">
+  <ion-toolbar>
+    <ion-button slot="start" class="BackBtnTop" >
+      <img class="BackArrow" src="assets/icon/left-arrow.svg" />
+    </ion-button>
+    <ion-title class="MainTitle">My QR Code</ion-title>
+  
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <button ion-button (click)="getUserLocation()">Get location</button>
+  <h1 >Current user Location is {{userlocation}}</h1>
+  <ion-card>
+    <ion-card-header>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-button expand="full" color="success" (click)="scanBarcode()">Scan a Code</ion-button>
+      <div *ngIf="scannedData">
+        <p>
+          Scanned Code Text : <b>{{ scannedData["text"] }}</b>
+        </p>
+      
+      </div>
+    </ion-card-content>
+  </ion-card>
+  
+</ion-content>

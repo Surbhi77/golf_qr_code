@@ -1,0 +1,53 @@
+<ion-content>
+  <div class="MainWapperPadding">
+    <ion-row>
+      <ion-col size="12">
+        <div class="Welcome">
+          <h3>Welcome,</h3>
+          <h4>Sign in to continue!</h4>
+        </div>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="12">
+        <div class="logos">
+            <img src="assets/icon/golf-player.png" />
+        </div>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="12">
+        <form [formGroup]="loginform" novalidate >
+        <div class="inputforms">
+          <ion-list>
+            <ion-item lines="none" class="passitem">
+              <ion-label position="stacked">Member ID</ion-label>
+              <ion-input formControlName="email"></ion-input>
+            </ion-item>
+            <span class="error" *ngIf="isSubmitted && errorControl.email.errors?.required">
+              Mamber id is required.
+            </span>
+            <ion-item lines="none" class="passitem">
+              <ion-label  position="stacked">Password</ion-label>
+              <ion-input formControlName="password" type="password"></ion-input>
+            </ion-item>
+            <span class="error" *ngIf="isSubmitted && errorControl.password.errors?.required">
+              Password is required.
+            </span>
+          </ion-list>
+
+          <div class="ForgotPass">
+            <p routerLink="/forget-password">Forgot Password?</p>
+          </div>
+
+          <div class="loginbtn">
+            <ion-button class="ThemeBtnLogin" expand="full" (click)="userlogin()" >LOGIN</ion-button>
+          </div>
+        </div>
+      </form>
+      </ion-col>
+    </ion-row>
+  </div>
+</ion-content>
